@@ -12,6 +12,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation(kotlin("test"))
 }
 
 tasks.test {
@@ -22,5 +23,5 @@ kotlin {
 }
 
 application {
-    mainClass.set("org.example.TestKt")
+    mainClass.set("org.example.MainKt")
 }
