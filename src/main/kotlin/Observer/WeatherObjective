@@ -1,0 +1,7 @@
+Objective:
+Your goal is to implement the Observer design pattern to create a simple weather monitoring system. This pattern is perfect for situations where a change in one object (the "subject") needs to be communicated to a list of other objects (the "observers") without the subject needing to know who or what those observers are.
+Scenario: The Weather Station
+Imagine you have a WeatherStation that measures temperature, humidity, and pressure. You also have various display devices that need to show this weather data.
+● CurrentConditionsDisplay: Shows the most recent measurements.
+● StatisticsDisplay: Shows the average temperature.
+Whenever the WeatherStation gets new measurements, all connected display devices should update automatically.
