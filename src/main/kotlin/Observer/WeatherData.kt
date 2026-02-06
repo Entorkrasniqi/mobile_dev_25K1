@@ -5,22 +5,45 @@ Float, val pressure: Float)
 
 // --- The Subject (or Observable)
 // TODO: This class should be able to register, remove, and notify observers.
-class WeatherStation{
+class WeatherStation {
+    private val observers = mutableSetOf<Observer>()
     private var currentData: WeatherData? = null
-    // This method is called whenever new weather data is available.
+// create interface observer
+    interface Observer {
+        fun onUpdate(weatherData: WeatherData)
+    }
+//register observer function
+    fun registerObserver(observer: Observer) {
+        observers.add(observer)
+    }
+// create remove observer function
+    fun removeObserver(observer: Observer) {
+        observers.remove(observer)
+    }
+    // create notify observer function
+    fun notifyObserver() {
+        currentData?.let { data ->
+            for (observer in observers) {
+                observer.onUpdate(data)
+            }
+        }
+    }
+
     fun measurementsChanged(newData: WeatherData) {
         this.currentData = newData
         println("WeatherStation: Got new Data -> $currentData")
-        // TODO: Notify all registered observers here!
+        notifyObserver()  // Call this to notify all observers
     }
 }
+
 // --- The Observers ---
 // TODO: This class should update its display when it receives new data.
-class CurrentConditionsDisplay {
-    fun display (){
-        println("CurrentConditionsDisplay: IMPLEMENT ME")
+class CurrentConditionsDisplay : WeatherStation.Observer {
+    override fun onUpdate(weatherData: WeatherData) {
+        println("Current conditions: ${weatherData.temperature}°F and ${weatherData.humidity}% humidity")
     }
 }
+
 
 // TODO: This class should calculate and display the average temperature.
 
