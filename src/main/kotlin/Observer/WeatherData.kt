@@ -28,7 +28,6 @@ class WeatherStation {
             }
         }
     }
-
     fun measurementsChanged(newData: WeatherData) {
         this.currentData = newData
         println("WeatherStation: Got new Data -> $currentData")
