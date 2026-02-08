@@ -2,8 +2,11 @@ BASICS:
 
 val vs var:
 
-1: val is
-2: var is
+You declare properties with val and var aslo in class, interface or objects,
+both are mutable and u can delcare them as top-level properties!
+
+1: val is used for numbers mostly val pi = 3.141 or val counter = 0
+2: var is used for strings var street: String = "London",  var name: String = "Holmes"
 
 Primary construction:
 
